@@ -54,7 +54,7 @@ BEGIN TRY;
     INSERT INTO dbo.TarjetaFisica(Codigo, CodigoTC, FechaVencimiento, CCV, IdMotivoInvalidacion)
     SELECT
         NTF.value('@Codigo', 'BIGINT'),
-        NTF.value('@TCAsociada', 'INT'),
+        NTF.value('@CodigoTC', 'INT'),
         -- Convert 'M/YYYY' to a valid DATE format (e.g., 'YYYY-MM-01')
         DATEFROMPARTS(
             CAST(SUBSTRING(NTF.value('@FechaVencimiento', 'VARCHAR(7)'), CHARINDEX('/', NTF.value('@FechaVencimiento', 'VARCHAR(7)')) + 1, 4) AS INT),
